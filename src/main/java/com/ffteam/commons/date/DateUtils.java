@@ -49,4 +49,9 @@ public class DateUtils {
 				convert(zoneId, d1).orElse(null), 
 				convert(zoneId, d2).orElse(null));
 	}
+	
+	@SuppressWarnings("deprecation")
+	public static Date safeDate(final int year, final int month, final int date) {
+		return new Date(year, month, date);
+	}
 }
