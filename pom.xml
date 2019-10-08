@@ -20,12 +20,21 @@
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		
 		<!-- Dependencies -->
+		<slf4j.api.version>1.7.28</slf4j.api.version>
 		<junit.jupiter.engine.version>5.5.2</junit.jupiter.engine.version>
 		<junit.jupiter.params.version>5.5.2</junit.jupiter.params.version>
 		<junit.platform.launcher.version>1.5.2</junit.platform.launcher.version>
 	</properties>
 
 	<dependencies>
+		<!-- Loggers -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.api.version}</version>
+		</dependency>
+	
+		<!-- Testing -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
