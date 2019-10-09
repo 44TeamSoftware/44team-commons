@@ -123,4 +123,16 @@ public class DateUtilsTest {
 
 		assertEquals(expected, actual);
 	}
+
+	@Test
+	public void testSafeDate() {
+		int year = 2000;
+		int month = 3;
+		int day = 15;
+		Date expected = new Date(year, month, day);
+
+		Date actual = DateUtils.safeDate(year, month, day);
+
+		assertEquals(expected, actual);
+	}
 }
