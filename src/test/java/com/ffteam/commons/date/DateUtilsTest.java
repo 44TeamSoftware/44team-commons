@@ -13,7 +13,7 @@ public class DateUtilsTest {
 
 	@Test
 	public void testConvertToDate() {
-		ZoneId zoneId	= ZoneId.of("EST", ZoneId.SHORT_IDS);
+		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
 		LocalDate localDate = LocalDate.of(2000, 1, 1);
 		Optional<Date> expected = Optional.of(new Date(2000-1900, 0, 1));
 
@@ -24,7 +24,7 @@ public class DateUtilsTest {
 
 	@Test
 	public void testConvertToDate_whenLocalDateIsNull() {
-		ZoneId zoneId	= ZoneId.of("EST", ZoneId.SHORT_IDS);
+		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
 		LocalDate localDate = null;
 		Optional<Date> expected = Optional.empty();
 
@@ -35,7 +35,7 @@ public class DateUtilsTest {
 
 	@Test
 	public void testConvertToLocalDate() {
-		ZoneId zoneId	= ZoneId.of("EST", ZoneId.SHORT_IDS);
+		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
 		Date date = new Date(2000-1900, 0, 1);
 		Optional<LocalDate> expected = Optional.of(LocalDate.of(2000, 1, 1));
 
@@ -46,7 +46,7 @@ public class DateUtilsTest {
 
 	@Test
 	public void testConvertToDate_whenDateIsNull() {
-		ZoneId zoneId	= ZoneId.of("EST", ZoneId.SHORT_IDS);
+		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
 		Date date = null;
 		Optional<Date> expected = Optional.empty();
 
