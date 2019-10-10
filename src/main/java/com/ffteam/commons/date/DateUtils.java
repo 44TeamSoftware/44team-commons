@@ -1,31 +1,33 @@
 package com.ffteam.commons.date;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
 
 public class DateUtils {
-
+	
+	public static final int YEAR_DIFFERENT = 1900;
+	
 	private DateUtils() {
 
 	}
 
-	public static Optional<Date> convert(final ZoneId zoneId, final LocalDate localDate) {
+	public static Optional<Date> convert(final LocalDate localDate) {
 		if (Objects.isNull(localDate)) {
 			return Optional.empty();
 		}
 
-		return Optional.of(Date.from(localDate.atStartOfDay(zoneId).toInstant()));
+		return Optional.of(safeDate(localDate.getYear() - YEAR_DIFFERENT, localDate.getMonthValue() - 1, localDate.getDayOfMonth()));
 	}
 
-	public static Optional<LocalDate> convert(final ZoneId zoneId, final Date date) {
+	@SuppressWarnings("deprecation")
+	public static Optional<LocalDate> convert(final Date date) {
 		if (Objects.isNull(date)) {
 			return Optional.empty();
 		}
 
-		return Optional.of(date.toInstant().atZone(zoneId).toLocalDate());
+		return Optional.of(LocalDate.of(date.getYear() + YEAR_DIFFERENT, date.getMonth() + 1, date.getDate()));
 	}
 
 	public static int compare(final LocalDate d1, final LocalDate d2) {
@@ -44,10 +46,10 @@ public class DateUtils {
 		return d1.compareTo(d2);
 	}
 	
-	public static int compare(final ZoneId zoneId, final Date d1, final Date d2) {
+	public static int compare(final Date d1, final Date d2) {
 		return compare(
-				convert(zoneId, d1).orElse(null), 
-				convert(zoneId, d2).orElse(null));
+				convert(d1).orElse(null), 
+				convert(d2).orElse(null));
 	}
 	
 	@SuppressWarnings("deprecation")
