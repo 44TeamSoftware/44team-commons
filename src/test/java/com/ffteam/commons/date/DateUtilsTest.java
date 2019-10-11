@@ -1,142 +1,137 @@
 package com.ffteam.commons.date;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class DateUtilsTest {
-
+	
 	@Test
 	public void testConvertToDate() {
-		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
-		LocalDate localDate = LocalDate.of(2000, 1, 1);
+		final LocalDate localDate = LocalDate.of(2000, 1, 1);
+		
 		@SuppressWarnings("deprecation")
-		Optional<Date> expected = Optional.of(new Date(2000-1900, 0, 1));
+		final Optional<Date> expected = Optional.of(new Date(2000 - 1900, 0, 1));
 
-		Optional<Date> actual = DateUtils.convert(zoneId, localDate);
+		final Optional<Date> actual = DateUtils.convert(localDate);
 
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void testConvertToDate_whenLocalDateIsNull() {
-		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
-		LocalDate localDate = null;
-		Optional<Date> expected = Optional.empty();
+	public void testConvertToDateWhenLocalDateIsNull() {
+		final LocalDate localDate = null;
+		final Optional<Date> expected = Optional.empty();
 
-		Optional<Date> actual = DateUtils.convert(zoneId, localDate);
+		final Optional<Date> actual = DateUtils.convert(localDate);
 
 		assertEquals(expected, actual);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testConvertToLocalDate() {
-		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
-		Date date = new Date(2000-1900, 0, 1);
-		Optional<LocalDate> expected = Optional.of(LocalDate.of(2000, 1, 1));
+		@SuppressWarnings("deprecation")
+		final Date date = new Date(2000 - 1900, 0, 1);
+		final Optional<LocalDate> expected = Optional.of(LocalDate.of(2000, 1, 1));
 
-		Optional<LocalDate> actual = DateUtils.convert(zoneId, date);
-
-		assertEquals(expected, actual);
-	}
-
-	@Test
-	public void testConvertToDate_whenDateIsNull() {
-		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
-		Date date = null;
-		Optional<Date> expected = Optional.empty();
-
-		Optional<LocalDate> actual = DateUtils.convert(zoneId, date);
+		final Optional<LocalDate> actual = DateUtils.convert(date);
 
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void testCompareLocalDate_withBothDatesNull() {
-		LocalDate date1 = null;
-		LocalDate date2 = null;
-		int expected = 0;
+	public void testConvertToDateWhenDateIsNull() {
+		final Date date = null;
+		final Optional<Date> expected = Optional.empty();
 
-		int actual = DateUtils.compare(date1, date2);
-
-		assertEquals(expected, actual);
-	}
-
-	@Test
-	public void testCompareLocalDate_withDateOneNull() {
-		LocalDate date1 = null;
-		LocalDate date2 = LocalDate.of(2000, 12, 3);
-		int expected = -1;
-
-		int actual = DateUtils.compare(date1, date2);
+		final Optional<LocalDate> actual = DateUtils.convert(date);
 
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void testCompareLocalDate_withDateTwoNull() {
-		LocalDate date1 = LocalDate.of(2000, 12, 3);
-		LocalDate date2 = null;
-		int expected = 1;
+	public void testCompareLocalDateWithBothDatesNull() {
+		final LocalDate date1 = null;
+		final LocalDate date2 = null;
+		final int expected = 0;
 
-		int actual = DateUtils.compare(date1, date2);
+		final int actual = DateUtils.compare(date1, date2);
 
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void testCompareDate_withBothDatesNull() {
-		Date date1 = null;
-		Date date2 = null;
-		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
-		int expected = 0;
+	public void testCompareLocalDateWithDateOneNull() {
+		final LocalDate date1 = null;
+		final LocalDate date2 = LocalDate.of(2000, 12, 3);
+		final int expected = -1;
 
-		int actual = DateUtils.compare(zoneId, date1, date2);
+		final int actual = DateUtils.compare(date1, date2);
 
 		assertEquals(expected, actual);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
-	public void testCompareDate_withDateOneNull() {
-		Date date1 = null;
-		Date date2 = new Date(2000-1900, 11, 3);
-		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
-		int expected = -1;
+	public void testCompareLocalDateWithDateTwoNull() {
+		final LocalDate date1 = LocalDate.of(2000, 12, 3);
+		final LocalDate date2 = null;
+		final int expected = 1;
 
-		int actual = DateUtils.compare(zoneId, date1, date2);
+		final int actual = DateUtils.compare(date1, date2);
 
 		assertEquals(expected, actual);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
-	public void testCompareDate_withDateTwoNull() {
-		Date date1 =  new Date(2000-1900, 11, 3);
-		Date date2 = null;
-		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
-		int expected = 1;
+	public void testCompareDateWithBothDatesNull() {
+		final Date date1 = null;
+		final Date date2 = null;
+		final int expected = 0;
 
-		int actual = DateUtils.compare(zoneId, date1, date2);
+		final int actual = DateUtils.compare(date1, date2);
 
 		assertEquals(expected, actual);
 	}
 
-	@SuppressWarnings("deprecation")
+	@Test
+	public void testCompareDateWithDateOneNull() {
+		final Date date1 = null;
+		
+		@SuppressWarnings("deprecation")
+		final Date date2 = new Date(2000 - 1900, 11, 3);
+		final int expected = -1;
+
+		final int actual = DateUtils.compare(date1, date2);
+
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testCompareDateWithDateTwoNull() {
+		@SuppressWarnings("deprecation")
+		final Date date1 = new Date(2000 - 1900, 11, 3);
+		final Date date2 = null;
+		final int expected = 1;
+
+		final int actual = DateUtils.compare(date1, date2);
+
+		assertEquals(expected, actual);
+	}
+
 	@Test
 	public void testSafeDate() {
-		int year = 2000;
-		int month = 3;
-		int day = 15;
-		Date expected = new Date(year, month, day);
+		final int year = 2000;
+		final int month = 3;
+		final int day = 15;
+		
+		@SuppressWarnings("deprecation")
+		final Date expected = new Date(year, month, day);
 
-		Date actual = DateUtils.safeDate(year, month, day);
+		final Date actual = DateUtils.safeDate(year, month, day);
 
 		assertEquals(expected, actual);
 	}
