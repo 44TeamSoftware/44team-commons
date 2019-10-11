@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DateUtilsTest {
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testConvertToDate() {
 		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
 		LocalDate localDate = LocalDate.of(2000, 1, 1);
+		@SuppressWarnings("deprecation")
 		Optional<Date> expected = Optional.of(new Date(2000-1900, 0, 1));
 
 		Optional<Date> actual = DateUtils.convert(zoneId, localDate);
