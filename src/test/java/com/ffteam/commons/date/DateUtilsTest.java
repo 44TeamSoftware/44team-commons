@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DateUtilsTest {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testConvertToDate() {
 		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
@@ -33,6 +34,7 @@ public class DateUtilsTest {
 		assertEquals(expected, actual);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testConvertToLocalDate() {
 		ZoneId zoneId = ZoneId.of("EST", ZoneId.SHORT_IDS);
@@ -100,6 +102,7 @@ public class DateUtilsTest {
 		assertEquals(expected, actual);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testCompareDate_withDateOneNull() {
 		Date date1 = null;
@@ -112,6 +115,7 @@ public class DateUtilsTest {
 		assertEquals(expected, actual);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testCompareDate_withDateTwoNull() {
 		Date date1 =  new Date(2000-1900, 11, 3);
@@ -124,6 +128,7 @@ public class DateUtilsTest {
 		assertEquals(expected, actual);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testSafeDate() {
 		int year = 2000;

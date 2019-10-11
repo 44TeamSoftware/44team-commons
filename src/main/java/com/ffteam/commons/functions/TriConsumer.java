@@ -3,9 +3,9 @@ package com.ffteam.commons.functions;
 import java.util.Objects;
 
 /**
- * Represents an operation that accepts two input arguments and returns no
- * result.  This is the two-arity specialization of {@link Consumer}.
- * Unlike most other functional interfaces, {@code BiConsumer} is expected
+ * Represents an operation that accepts three input arguments and returns no
+ * result.  The three-arity specialization of {@link Consumer}.
+ * Unlike most other functional interfaces, {@code TriConsumer} is expected
  * to operate via side-effects.
  * <p>
  * <p>This is a <a href="package-summary.html">functional interface</a>
@@ -26,18 +26,19 @@ public interface TriConsumer<T, U, O> {
      *
      * @param t the first input argument
      * @param u the second input argument
+     * @param o the third input argument
      */
 	void accept(final T t, final U u, final O o);
 	
 	/**
-     * Returns a composed {@code BiConsumer} that performs, in sequence, this
+     * Returns a composed {@code TriConsumer} that performs, in sequence, this
      * operation followed by the {@code after} operation. If performing either
      * operation throws an exception, it is relayed to the caller of the
      * composed operation.  If performing this operation throws an exception,
      * the {@code after} operation will not be performed.
      *
      * @param after the operation to perform after this operation
-     * @return a composed {@code BiConsumer} that performs in sequence this
+     * @return a composed {@code TriConsumer} that performs in sequence this
      * operation followed by the {@code after} operation
      * @throws NullPointerException if {@code after} is null
      */
