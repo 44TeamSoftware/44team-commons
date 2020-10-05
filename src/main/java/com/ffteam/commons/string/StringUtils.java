@@ -34,4 +34,8 @@ public final class StringUtils {
 	public static boolean isNotEmpty(final String string) {
 		return !isEmpty(string);
 	}
+	
+	public static boolean length(final String string) {
+		return !Objects.isNull(string) ? string.length() : -1;
+	}
 }
