@@ -1,16 +1,20 @@
 package com.ffteam.commons.collection;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
+import java.util.Collections;
 import java.util.Objects;
-import java.util.TreeSet;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 /**
  * This class consists of {@code static} utility methods for operating with collections
  */
 public final class CollectionUtils {
+	
+	/**
+     * An empty unmodifiable collection
+     */
+	
+	@SuppressWarnings("rawtypes")
+    public static final Collection EMPTY_COLLECTION = Collections.emptyList();
 	
 	/**
 	 * Hide constructor
@@ -20,24 +24,16 @@ public final class CollectionUtils {
 	}
 	
 	/**
-	 * Help easy create new {@link Collector} for {@link LinkedHashSet}
-	 * 
-	 * @return {@link Collector} for {@link LinkedHashSet}
-	 */
-	public static <E> Collector<E, ?, LinkedHashSet<E>> toLinkedHasSet() {
-		return Collectors.toCollection(LinkedHashSet::new);
-	}
-
-	/**
-	 * Help easy create new {@link Collector} for {@link TreeSet}
-	 * 
-	 * @return {@link Collector} for {@link TreeSet}
-	 */
-	public static <E> Collector<E, ?, TreeSet<E>> toTreeSet() {
-		return Collectors.toCollection(TreeSet::new);
-	}
+     * Returns the unmodifiable EMPTY_COLLECTION with generic type safety
+     *
+     * @param <T> the element type
+     * @return immutable empty collection
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Collection<T> emptyCollection() {
+        return EMPTY_COLLECTION;
+    }
 	
-
 	/**
 	 * Check if {@code collection} is empty
 	 * 
