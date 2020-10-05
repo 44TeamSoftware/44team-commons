@@ -1,6 +1,7 @@
 package com.ffteam.commons.collection;
 
 import java.lang.String;
+import java.lang.Object;
 import java.util.Objects;
 
 /**
@@ -33,5 +34,19 @@ public final class StringUtils {
 	 */
 	public static boolean isNotEmpty(final String string) {
 		return !isEmpty(string);
+	}
+	
+	/**
+	 * Returns safe length of {@code string} or -1 if {@code string} is {@code null}
+	 */
+	public static int length(final String string) {
+		return !Objects.isNull(string) ? string.length() : -1;
+	}
+	
+	/**
+	 * Returns safe string represantation of {@code object} or empty string if {@code object} is {@code null}
+	 */
+	public static String toString(final Object object) {
+		return !Objects.isNull(object) ? object.toString() : "";
 	}
 }
