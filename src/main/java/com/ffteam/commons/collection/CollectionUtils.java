@@ -1,6 +1,7 @@
 package com.ffteam.commons.collection;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 
 /**
@@ -9,11 +10,29 @@ import java.util.Objects;
 public final class CollectionUtils {
 	
 	/**
+     * An empty unmodifiable collection
+     */
+	
+	@SuppressWarnings("rawtypes")
+    public static final Collection EMPTY_COLLECTION = Collections.emptyList();
+	
+	/**
 	 * Hide constructor
 	 */
 	private CollectionUtils() {
 		
 	}
+	
+	/**
+     * Returns the unmodifiable EMPTY_COLLECTION with generic type safety
+     *
+     * @param <T> the element type
+     * @return immutable empty collection
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Collection<T> emptyCollection() {
+        return EMPTY_COLLECTION;
+    }
 	
 	/**
 	 * Check if {@code collection} is empty
