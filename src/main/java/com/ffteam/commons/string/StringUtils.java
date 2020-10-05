@@ -1,6 +1,7 @@
 package com.ffteam.commons.collection;
 
 import java.lang.String;
+import java.lang.Object;
 import java.util.Objects;
 
 /**
@@ -35,7 +36,11 @@ public final class StringUtils {
 		return !isEmpty(string);
 	}
 	
-	public static boolean length(final String string) {
+	public static int length(final String string) {
 		return !Objects.isNull(string) ? string.length() : -1;
+	}
+	
+	public static String toString(final Object object) {
+		return !Objects.isNull(object) ? object.toString() : "";
 	}
 }
