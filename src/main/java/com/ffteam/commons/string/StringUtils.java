@@ -1,6 +1,8 @@
 package com.ffteam.commons.string;
 
 import java.lang.String;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.lang.Object;
 import java.util.Objects;
 
@@ -49,4 +51,13 @@ public final class StringUtils {
 	public static String toString(final Object object) {
 		return !Objects.isNull(object) ? object.toString() : "";
 	}
+	
+	public static String encodeUrlAsUTF8(final String value) {
+		if (value == null || value.isBlank()) {
+			return "";
+		}
+		
+	    return URLEncoder.encode(value, StandardCharsets.UTF_8);
+	}
+
 }
