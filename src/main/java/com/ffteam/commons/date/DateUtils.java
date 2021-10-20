@@ -1,6 +1,7 @@
 package com.ffteam.commons.date;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
@@ -96,4 +97,17 @@ public class DateUtils {
 	public static Date safeDate(final int year, final int month, final int date) {
 		return new Date(year, month, date);
 	}
+	
+	public static LocalDateTime atBeginOfDay(final LocalDateTime source) {
+		if (source == null) {
+			return null;
+		}
+		
+		return source
+				.withHour(0)
+				.withMinute(0)
+				.withSecond(0)
+				.withNano(0);
+	}
+
 }
