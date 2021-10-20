@@ -1,4 +1,4 @@
-package com.ffteam.commons.collection;
+package com.ffteam.commons.string;
 
 import java.lang.String;
 import java.lang.Object;
@@ -30,7 +30,7 @@ public final class StringUtils {
 	 * Check if {@code string} is not empty
 	 * 
 	 * @param string a reference to be checked
-	 * @return {@link Boolean} {@code true} if {@code string} is not {@code null} and has at lesat one symbol
+	 * @return {@link Boolean} {@code true} if {@code string} is not {@code null} and has at least one symbol
 	 */
 	public static boolean isNotEmpty(final String string) {
 		return !isEmpty(string);
@@ -44,7 +44,7 @@ public final class StringUtils {
 	}
 	
 	/**
-	 * Returns safe string represantation of {@code object} or empty string if {@code object} is {@code null}
+	 * Returns safe string representation of {@code object} or empty string if {@code object} is {@code null}
 	 */
 	public static String toString(final Object object) {
 		return !Objects.isNull(object) ? object.toString() : "";
