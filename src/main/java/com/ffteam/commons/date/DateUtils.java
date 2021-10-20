@@ -109,5 +109,16 @@ public class DateUtils {
 				.withSecond(0)
 				.withNano(0);
 	}
-
+	
+	public static LocalDateTime atEndOfDay(final LocalDateTime source) {
+		if (source == null) {
+			return null;
+		}
+		
+		return source
+				.withHour(23)
+				.withMinute(59)
+				.withSecond(59)
+				.withNano(999_999_999);
+	}
 }
