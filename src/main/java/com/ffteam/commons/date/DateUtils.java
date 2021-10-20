@@ -2,6 +2,7 @@ package com.ffteam.commons.date;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
@@ -121,4 +122,9 @@ public class DateUtils {
 				.withSecond(59)
 				.withNano(999_999_999);
 	}
+	
+	public static long toMilliseconds(final LocalDateTime ldt) {
+		return Objects.requireNonNull(ldt).atOffset(ZoneOffset.UTC).toInstant().toEpochMilli();
+	}
+
 }
