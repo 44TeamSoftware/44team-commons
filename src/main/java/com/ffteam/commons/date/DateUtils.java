@@ -14,6 +14,12 @@ public class DateUtils {
 	
 	public static final int YEAR_DIFFERENT = 1900;
 	
+	public static final long MILLISECONDS_IN_SECOND = 1000;
+	public static final long MILLISECONDS_IN_MINUTE = 60 * MILLISECONDS_IN_SECOND;
+	public static final long MILLISECONDS_IN_HOUR = 60 * MILLISECONDS_IN_MINUTE;
+	public static final long MILLISECONDS_IN_DAY = 24 * MILLISECONDS_IN_HOUR;
+	public static final long MILLISECONDS_IN_WEEK = 7 * MILLISECONDS_IN_DAY;
+	
 	/**
 	 * Hide constructor
 	 */
@@ -127,4 +133,7 @@ public class DateUtils {
 		return Objects.requireNonNull(ldt).atOffset(ZoneOffset.UTC).toInstant().toEpochMilli();
 	}
 
+	public static long minutesToMilliseconds(final long minutes) {
+		return minutes * MILLISECONDS_IN_MINUTE;
+	}
 }
