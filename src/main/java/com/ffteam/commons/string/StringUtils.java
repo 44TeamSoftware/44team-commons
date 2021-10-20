@@ -5,6 +5,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.lang.Object;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -67,6 +68,27 @@ public final class StringUtils {
 		}
 		
 	    return URLDecoder.decode(value, StandardCharsets.UTF_8);
+	}
+
+	public static String parseStringToSentence(final String inputString, final String separator) {
+		if (inputString == null || inputString.isBlank()) {
+			return "";
+		}
+		
+	    final StringBuilder stringBuilder = new StringBuilder();
+	    final char[] characters = inputString.toCharArray();
+
+		for (int index = 0; index < characters.length; index++) {
+			final char character = characters[index];
+			
+			if (index > 0 && Character.isUpperCase(character)) {
+				stringBuilder.append(separator);
+			}
+
+			stringBuilder.append(character);
+		}
+
+	    return stringBuilder.toString().toLowerCase(Locale.getDefault()).trim();
 	}
 
 }
